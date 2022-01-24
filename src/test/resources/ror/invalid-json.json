@@ -1,0 +1,16 @@
+{
+  "id": "https://ror.org/00xmqmx64",
+  "name": "Senckenberg Society for Nature Research",
+  "email_address": null,
+  "ip_addresses": [],
+  "established": 1817,
+  "types": [
+    "Nonprofit"
+  ],
+  "relationships": [
+    {
+      "label": "Leibniz Association",
+      "type": "Parent",
+      "id": "https://ror.org/01n6r0e97"
+    }
+    }

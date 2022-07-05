@@ -8,8 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "application")
 public class ApplicationProperties {
 
-  private boolean deleteAll = false;
-
   @NotBlank
   private String filename = "organisations.csv";
 }

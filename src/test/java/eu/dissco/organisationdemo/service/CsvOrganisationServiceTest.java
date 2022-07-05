@@ -1,6 +1,6 @@
 package eu.dissco.organisationdemo.service;
 
-import static eu.dissco.organisationdemo.TestUtils.testCsvOrganisation;
+import static eu.dissco.organisationdemo.TestUtils.givenOrganisation;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -27,7 +27,7 @@ class CsvOrganisationServiceTest {
     var organisations = service.retrieveOrganisations("csv/organisation.csv");
 
     // Then
-    assertThat(organisations).isEqualTo(List.of(testCsvOrganisation()));
+    assertThat(organisations).isEqualTo(List.of(givenOrganisation()));
   }
 
   @Test

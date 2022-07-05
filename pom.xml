@@ -12,20 +12,12 @@
 	<artifactId>organisation-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>organisation-demo</name>
-	<description>Demo project for adding Organisation data to Cordra</description>
+	<description>Demo project for adding Organisation data</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
-		<doip-sdk.version>2.1.0</doip-sdk.version>
 		<univocity-parsers.verison>2.9.1</univocity-parsers.verison>
 	</properties>
-
-	<repositories>
-		<repository>
-			<id>gbif</id>
-			<url>https://repository.gbif.org/content/groups/gbif</url>
-		</repository>
-	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -56,10 +48,14 @@
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>net.dona.doip</groupId>
-			<artifactId>doip-sdk</artifactId>
-			<version>${doip-sdk.version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jooq</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -79,6 +75,7 @@
 	</dependencyManagement>
 
 	<build>
+		<defaultGoal>clean package</defaultGoal>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -91,6 +88,31 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-codegen-maven</artifactId>
+				<version>${jooq.version}</version>
+				<configuration>
+					<configurationFile>src/main/resources/jooq-configuration.xml</configurationFile>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.postgresql</groupId>
+						<artifactId>postgresql</artifactId>
+						<version>${postgresql.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>javax.xml.bind</groupId>
+						<artifactId>jaxb-api</artifactId>
+						<version>${javax-jaxb.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.glassfish.jaxb</groupId>
+						<artifactId>jaxb-runtime</artifactId>
+						<version>${glassfish-jaxb.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

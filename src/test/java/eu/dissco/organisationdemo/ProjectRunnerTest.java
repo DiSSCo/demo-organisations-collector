@@ -1,7 +1,6 @@
 package eu.dissco.organisationdemo;
 
 import static eu.dissco.organisationdemo.TestUtils.givenOrganisation;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 
@@ -16,7 +15,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class ProjectRunnerTest {
+class ProjectRunnerTest {
 
   @Mock
   private CsvOrganisationService csvService;
@@ -36,7 +35,8 @@ public class ProjectRunnerTest {
   void testRun() {
     // Given
     given(properties.getFilename()).willReturn("organisations.csv");
-    given(csvService.retrieveOrganisations("organisations.csv")).willReturn(List.of(givenOrganisation()));
+    given(csvService.retrieveOrganisations("organisations.csv")).willReturn(
+        List.of(givenOrganisation()));
 
     // When
     projectRunner.run();
